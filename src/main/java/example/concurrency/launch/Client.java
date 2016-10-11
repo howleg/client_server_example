@@ -27,7 +27,7 @@ public class Client {
 			output.write("Hello there friend!\n");
 			output.flush();
 
-			while (true) {
+			while (!connection.isClosed()) {
 				
 				System.out.println("Server responded --> " + input.readLine());
 
@@ -38,9 +38,11 @@ public class Client {
 				if(!EXIT.equals(message)) {				
 					output.write(message + "\n");
 					output.flush();
+				} else {
+					output.write("Goodbye!");
+					output.flush();
+					connection.close();
 				}
-				else
-					System.exit(0);
 				
 			}
 
@@ -48,15 +50,7 @@ public class Client {
 			
 			e.printStackTrace();
 			
-		} finally {
-			
-			try {
-				connection.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
+		} 
 	}
 
 }
