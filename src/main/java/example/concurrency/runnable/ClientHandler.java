@@ -28,19 +28,22 @@ public class ClientHandler implements Runnable {
 			while(!client.isClosed())
 			{
 				String message = input.readLine();
+				if(message == null)
+					return;
 				System.out.println(clientIdentifier + " said: " + message);
 				
 				output.write("Thank you " + clientIdentifier + ", your message [" + message + "] has been recieved!\n");
 				output.flush();
 			}
 			
-			System.out.println(clientIdentifier + " has disconnected");
 			
 		} catch (Exception e) {
 		
-			e.printStackTrace();
+			//e.printStackTrace();
 		
 		} finally {
+			
+			System.out.println(clientIdentifier + " has disconnected");
 			
 			try {
 				client.close();
