@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.concurrent.TimeUnit;
 
 public class Client {
 
-	private static final String ADDRESS = "localhost";//"10.1.1.109";
+	private static final String ADDRESS = "10.1.1.109";//"10.1.1.109";
 	private static final String EXIT = "exit";
 
 	public static void main(String[] args) {
